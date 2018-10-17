@@ -18,7 +18,7 @@ class Code extends Component {
   render() {
     return (
       <code onClick={this.handleClick}>
-        {this.state.bold ? this.props.plus : ""} {this.props.children}
+        {this.state.bold ? this.props.plus : "ooi"} {this.props.children}
       </code>
     );
   }
