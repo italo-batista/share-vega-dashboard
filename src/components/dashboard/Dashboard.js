@@ -1,17 +1,16 @@
 import React from "react";
 import VisGrid from "./../visgrid/VisGrid";
+import dataVisz from '../../static/data_visz.json'
 
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { date: new Date() };
   }
 
   render() {
     return (
       <div>
-        <VisGrid />
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+        <VisGrid listVisz={dataVisz}/>
       </div>
     );
   }

@@ -1,0 +1,206 @@
+[
+    {
+        "url": "https://gist.github.com/italo-batista/bf8358c81bb9c58526a9ea06a5bfbde4", 
+        "title": "Child Bride Vis",
+        "declarationJson": {
+            "title": "Volume total por meses e ano",
+            "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+            "data": {
+              "url": "https://api.insa.gov.br/reservatorios/12172/monitoramento",
+              "format": {
+                "type": "json",
+                "property": "volumes",
+                "parse": {
+                  "DataInformacao": "utc:'%d/%m/%Y'"
+                }
+              }
+            },
+            "transform": [
+              {
+                "filter": {
+                  "timeUnit": "year",
+                  "field": "DataInformacao",
+                  "range": [
+                    1998,
+                    2018
+                  ]
+                }
+              }
+            ],  
+            "width": 350,
+            "height": 350,
+            "mark": "rect",
+            "encoding": {
+              "y": {
+                "timeUnit": "year",
+                "field": "DataInformacao",
+                "type": "ordinal",
+                "axis": {
+                  "format": "%Y",
+                  "title": "Anos"
+                }
+              },
+              "x": {
+                "timeUnit": "month",
+                "field": "DataInformacao",
+                "type": "ordinal",
+                "axis": {
+                  "format": "%m",
+                  "title": "Meses"
+                }
+              },
+              "color": {
+                "field": "Volume",
+                "aggregate": "sum",
+                "type": "quantitative"
+              }
+            },
+            "config": {
+              "range": {
+                "heatmap": {
+                  "scheme": "greenblue"
+                }
+              },
+              "view": {
+                "stroke": "transparent"
+              }
+            }
+        }
+    },
+    {
+        "url": "https://gist.github.com/italo-batista/bf8358c81bb9c58526a9ea06a5bfbde4", 
+        "title": "Child Bride Vis",
+        "declarationJson": {
+            "title": "Volume total por meses e ano",
+            "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+            "data": {
+              "url": "https://api.insa.gov.br/reservatorios/12172/monitoramento",
+              "format": {
+                "type": "json",
+                "property": "volumes",
+                "parse": {
+                  "DataInformacao": "utc:'%d/%m/%Y'"
+                }
+              }
+            },
+            "transform": [
+              {
+                "filter": {
+                  "timeUnit": "year",
+                  "field": "DataInformacao",
+                  "range": [
+                    1998,
+                    2018
+                  ]
+                }
+              }
+            ],  
+            "width": 350,
+            "height": 350,
+            "mark": "rect",
+            "encoding": {
+              "y": {
+                "timeUnit": "year",
+                "field": "DataInformacao",
+                "type": "ordinal",
+                "axis": {
+                  "format": "%Y",
+                  "title": "Anos"
+                }
+              },
+              "x": {
+                "timeUnit": "month",
+                "field": "DataInformacao",
+                "type": "ordinal",
+                "axis": {
+                  "format": "%m",
+                  "title": "Meses"
+                }
+              },
+              "color": {
+                "field": "Volume",
+                "aggregate": "sum",
+                "type": "quantitative"
+              }
+            },
+            "config": {
+              "range": {
+                "heatmap": {
+                  "scheme": "greenblue"
+                }
+              },
+              "view": {
+                "stroke": "transparent"
+              }
+            }
+        }
+    },
+    {
+        "url": "https://gist.github.com/italo-batista/bf8358c81bb9c58526a9ea06a5bfbde4", 
+        "title": "Child Bride Vis",
+        "declarationJson": {
+            "title": "Volume total por meses e ano",
+            "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+            "data": {
+              "url": "https://api.insa.gov.br/reservatorios/12172/monitoramento",
+              "format": {
+                "type": "json",
+                "property": "volumes",
+                "parse": {
+                  "DataInformacao": "utc:'%d/%m/%Y'"
+                }
+              }
+            },
+            "transform": [
+              {
+                "filter": {
+                  "timeUnit": "year",
+                  "field": "DataInformacao",
+                  "range": [
+                    1998,
+                    2018
+                  ]
+                }
+              }
+            ],  
+            "width": 350,
+            "height": 350,
+            "mark": "rect",
+            "encoding": {
+              "y": {
+                "timeUnit": "year",
+                "field": "DataInformacao",
+                "type": "ordinal",
+                "axis": {
+                  "format": "%Y",
+                  "title": "Anos"
+                }
+              },
+              "x": {
+                "timeUnit": "month",
+                "field": "DataInformacao",
+                "type": "ordinal",
+                "axis": {
+                  "format": "%m",
+                  "title": "Meses"
+                }
+              },
+              "color": {
+                "field": "Volume",
+                "aggregate": "sum",
+                "type": "quantitative"
+              }
+            },
+            "config": {
+              "range": {
+                "heatmap": {
+                  "scheme": "greenblue"
+                }
+              },
+              "view": {
+                "stroke": "transparent"
+              }
+            }
+        }
+    }
+]
