@@ -1,5 +1,5 @@
 import React from "react";
-import VisPreview from './VisPreview'
+import VisPreview from "./VisPreview";
 
 class Visualization extends React.Component {
   constructor(props) {
@@ -13,9 +13,7 @@ class Visualization extends React.Component {
         <VisPreview visDeclaration={this.props.visDeclaration} />
         <div>
           <div>Title: {this.props.title}</div>
-          <div>
-            buttons...
-          </div>
+          <div>buttons...</div>
         </div>
       </div>
     );

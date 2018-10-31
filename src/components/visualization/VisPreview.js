@@ -1,4 +1,5 @@
 import React from "react";
+import VegaLite from "react-vega-lite";
 
 class VisPreview extends React.Component {
   constructor(props) {
@@ -6,9 +7,7 @@ class VisPreview extends React.Component {
   }
 
   render() {
-    return (
-      <div>Preview</div>
-    );
+    return <VegaLite spec={this.props.visDeclaration} />;
   }
 }
 
