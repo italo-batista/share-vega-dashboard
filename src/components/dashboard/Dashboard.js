@@ -1,6 +1,8 @@
 import React from "react";
 import VisGrid from "./../visgrid/VisGrid";
-import dataVisz from '../../static/data_visz.json'
+import dataVisz from "../../static/data_visz.json";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -9,8 +11,8 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div>
-        <VisGrid listVisz={dataVisz}/>
+      <div className="container">
+        <VisGrid listVisz={dataVisz} />
       </div>
     );
   }

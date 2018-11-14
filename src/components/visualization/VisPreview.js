@@ -7,7 +7,13 @@ class VisPreview extends React.Component {
   }
 
   render() {
-    return <VegaLite spec={this.props.visDeclaration} />;
+    function handleHover(...args) {
+      console.log(args);
+    }
+
+    return (
+      <VegaLite spec={this.props.visDeclaration} onSignalHover={handleHover} />
+    );
   }
 }
 
