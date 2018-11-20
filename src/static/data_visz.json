@@ -3,195 +3,417 @@
     "url": "https://gist.github.com/italo-batista/bf8358c81bb9c58526a9ea06a5bfbde4",
     "title": "Child Bride Vis",
     "declarationJson": {
-      "title": "Volume total por meses e ano",
-      "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
-      "data": {
-        "url": "https://api.insa.gov.br/reservatorios/12172/monitoramento",
-        "format": {
-          "type": "json",
-          "property": "volumes",
-          "parse": {
-            "DataInformacao": "utc:'%d/%m/%Y'"
-          }
-        }
-      },
-      "transform": [
+      "$schema": "https://vega.github.io/schema/vega/v4.json",
+      "width": 300,
+      "height": 240,
+      "padding": 5,
+
+      "data": [
         {
-          "filter": {
-            "timeUnit": "year",
-            "field": "DataInformacao",
-            "range": [1998, 2018]
-          }
+          "name": "table",
+          "values": [
+            { "category": "A", "position": 0, "value": 0.1 },
+            { "category": "A", "position": 1, "value": 0.6 },
+            { "category": "A", "position": 2, "value": 0.9 },
+            { "category": "A", "position": 3, "value": 0.4 },
+            { "category": "B", "position": 0, "value": 0.7 },
+            { "category": "B", "position": 1, "value": 0.2 },
+            { "category": "B", "position": 2, "value": 1.1 },
+            { "category": "B", "position": 3, "value": 0.8 },
+            { "category": "C", "position": 0, "value": 0.6 },
+            { "category": "C", "position": 1, "value": 0.1 },
+            { "category": "C", "position": 2, "value": 0.2 },
+            { "category": "C", "position": 3, "value": 0.7 }
+          ]
         }
       ],
-      "mark": "rect",
-      "width": "200",
-      "height": "200",
-      "encoding": {
-        "y": {
-          "timeUnit": "year",
-          "field": "DataInformacao",
+
+      "scales": [
+        {
+          "name": "yscale",
+          "type": "band",
+          "domain": { "data": "table", "field": "category" },
+          "range": "height",
+          "padding": 0.2
+        },
+        {
+          "name": "xscale",
+          "type": "linear",
+          "domain": { "data": "table", "field": "value" },
+          "range": "width",
+          "round": true,
+          "zero": true,
+          "nice": true
+        },
+        {
+          "name": "color",
           "type": "ordinal",
-          "axis": {
-            "format": "%Y",
-            "title": "Anos"
-          }
-        },
-        "x": {
-          "timeUnit": "month",
-          "field": "DataInformacao",
-          "type": "ordinal",
-          "axis": {
-            "format": "%m",
-            "title": "Meses"
-          }
-        },
-        "color": {
-          "field": "Volume",
-          "aggregate": "sum",
-          "type": "quantitative"
+          "domain": { "data": "table", "field": "position" },
+          "range": { "scheme": "category20" }
         }
-      },
-      "config": {
-        "range": {
-          "heatmap": {
-            "scheme": "greenblue"
-          }
+      ],
+
+      "axes": [
+        {
+          "orient": "left",
+          "scale": "yscale",
+          "tickSize": 0,
+          "labelPadding": 4,
+          "zindex": 1
         },
-        "view": {
-          "stroke": "transparent"
+        { "orient": "bottom", "scale": "xscale" }
+      ],
+
+      "marks": [
+        {
+          "type": "group",
+
+          "from": {
+            "facet": {
+              "data": "table",
+              "name": "facet",
+              "groupby": "category"
+            }
+          },
+
+          "encode": {
+            "enter": {
+              "y": { "scale": "yscale", "field": "category" }
+            }
+          },
+
+          "signals": [{ "name": "height", "update": "bandwidth('yscale')" }],
+
+          "scales": [
+            {
+              "name": "pos",
+              "type": "band",
+              "range": "height",
+              "domain": { "data": "facet", "field": "position" }
+            }
+          ],
+
+          "marks": [
+            {
+              "name": "bars",
+              "from": { "data": "facet" },
+              "type": "rect",
+              "encode": {
+                "enter": {
+                  "y": { "scale": "pos", "field": "position" },
+                  "height": { "scale": "pos", "band": 1 },
+                  "x": { "scale": "xscale", "field": "value" },
+                  "x2": { "scale": "xscale", "value": 0 },
+                  "fill": { "scale": "color", "field": "position" }
+                }
+              }
+            },
+            {
+              "type": "text",
+              "from": { "data": "bars" },
+              "encode": {
+                "enter": {
+                  "x": { "field": "x2", "offset": -5 },
+                  "y": {
+                    "field": "y",
+                    "offset": { "field": "height", "mult": 0.5 }
+                  },
+                  "fill": { "value": "white" },
+                  "align": { "value": "right" },
+                  "baseline": { "value": "middle" },
+                  "text": { "field": "datum.value" }
+                }
+              }
+            }
+          ]
         }
-      }
+      ]
     }
   },
   {
     "url": "https://gist.github.com/italo-batista/bf8358c81bb9c58526a9ea06a5bfbde4",
     "title": "Child Bride Vis",
     "declarationJson": {
-      "title": "Volume total por meses e ano",
-      "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
-      "data": {
-        "url": "https://api.insa.gov.br/reservatorios/12172/monitoramento",
-        "format": {
-          "type": "json",
-          "property": "volumes",
-          "parse": {
-            "DataInformacao": "utc:'%d/%m/%Y'"
-          }
-        }
-      },
-      "transform": [
+      "$schema": "https://vega.github.io/schema/vega/v4.json",
+      "width": 500,
+      "height": 200,
+      "padding": 5,
+
+      "data": [
         {
-          "filter": {
-            "timeUnit": "year",
-            "field": "DataInformacao",
-            "range": [1998, 2018]
-          }
+          "name": "table",
+          "values": [
+            { "x": 0, "y": 28, "c": 0 },
+            { "x": 0, "y": 55, "c": 1 },
+            { "x": 1, "y": 43, "c": 0 },
+            { "x": 1, "y": 91, "c": 1 },
+            { "x": 2, "y": 81, "c": 0 },
+            { "x": 2, "y": 53, "c": 1 },
+            { "x": 3, "y": 19, "c": 0 },
+            { "x": 3, "y": 87, "c": 1 },
+            { "x": 4, "y": 52, "c": 0 },
+            { "x": 4, "y": 48, "c": 1 },
+            { "x": 5, "y": 24, "c": 0 },
+            { "x": 5, "y": 49, "c": 1 },
+            { "x": 6, "y": 87, "c": 0 },
+            { "x": 6, "y": 66, "c": 1 },
+            { "x": 7, "y": 17, "c": 0 },
+            { "x": 7, "y": 27, "c": 1 },
+            { "x": 8, "y": 68, "c": 0 },
+            { "x": 8, "y": 16, "c": 1 },
+            { "x": 9, "y": 49, "c": 0 },
+            { "x": 9, "y": 15, "c": 1 }
+          ],
+          "transform": [
+            {
+              "type": "stack",
+              "groupby": ["x"],
+              "sort": { "field": "c" },
+              "field": "y"
+            }
+          ]
         }
       ],
-      "mark": "rect",
-      "width": "200",
-      "height": "200",
-      "encoding": {
-        "y": {
-          "timeUnit": "year",
-          "field": "DataInformacao",
+
+      "scales": [
+        {
+          "name": "x",
+          "type": "band",
+          "range": "width",
+          "domain": { "data": "table", "field": "x" }
+        },
+        {
+          "name": "y",
+          "type": "linear",
+          "range": "height",
+          "nice": true,
+          "zero": true,
+          "domain": { "data": "table", "field": "y1" }
+        },
+        {
+          "name": "color",
           "type": "ordinal",
-          "axis": {
-            "format": "%Y",
-            "title": "Anos"
-          }
-        },
-        "x": {
-          "timeUnit": "month",
-          "field": "DataInformacao",
-          "type": "ordinal",
-          "axis": {
-            "format": "%m",
-            "title": "Meses"
-          }
-        },
-        "color": {
-          "field": "Volume",
-          "aggregate": "sum",
-          "type": "quantitative"
+          "range": "category",
+          "domain": { "data": "table", "field": "c" }
         }
-      },
-      "config": {
-        "range": {
-          "heatmap": {
-            "scheme": "greenblue"
+      ],
+
+      "axes": [
+        { "orient": "bottom", "scale": "x", "zindex": 1 },
+        { "orient": "left", "scale": "y", "zindex": 1 }
+      ],
+
+      "marks": [
+        {
+          "type": "rect",
+          "from": { "data": "table" },
+          "encode": {
+            "enter": {
+              "x": { "scale": "x", "field": "x" },
+              "width": { "scale": "x", "band": 1, "offset": -1 },
+              "y": { "scale": "y", "field": "y0" },
+              "y2": { "scale": "y", "field": "y1" },
+              "fill": { "scale": "color", "field": "c" }
+            },
+            "update": {
+              "fillOpacity": { "value": 1 }
+            },
+            "hover": {
+              "fillOpacity": { "value": 0.5 }
+            }
           }
-        },
-        "view": {
-          "stroke": "transparent"
         }
-      }
+      ]
     }
   },
   {
     "url": "https://gist.github.com/italo-batista/bf8358c81bb9c58526a9ea06a5bfbde4",
-    "title": "Child Bride Vis",
+    "title": "Bar Chart Vis",
     "declarationJson": {
-      "title": "Volume total por meses e ano",
-      "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
-      "data": {
-        "url": "https://api.insa.gov.br/reservatorios/12172/monitoramento",
-        "format": {
-          "type": "json",
-          "property": "volumes",
-          "parse": {
-            "DataInformacao": "utc:'%d/%m/%Y'"
-          }
-        }
-      },
-      "transform": [
+      "$schema": "https://vega.github.io/schema/vega/v4.json",
+      "width": 400,
+      "height": 200,
+      "padding": 5,
+
+      "data": [
         {
-          "filter": {
-            "timeUnit": "year",
-            "field": "DataInformacao",
-            "range": [1998, 2018]
-          }
+          "name": "table",
+          "values": [
+            { "category": "A", "amount": 28 },
+            { "category": "B", "amount": 55 },
+            { "category": "C", "amount": 43 },
+            { "category": "D", "amount": 91 },
+            { "category": "E", "amount": 81 },
+            { "category": "F", "amount": 53 },
+            { "category": "G", "amount": 19 },
+            { "category": "H", "amount": 87 }
+          ]
         }
       ],
-      "mark": "rect",
-      "width": "200",
-      "height": "200",
-      "encoding": {
-        "y": {
-          "timeUnit": "year",
-          "field": "DataInformacao",
-          "type": "ordinal",
-          "axis": {
-            "format": "%Y",
-            "title": "Anos"
-          }
-        },
-        "x": {
-          "timeUnit": "month",
-          "field": "DataInformacao",
-          "type": "ordinal",
-          "axis": {
-            "format": "%m",
-            "title": "Meses"
-          }
-        },
-        "color": {
-          "field": "Volume",
-          "aggregate": "sum",
-          "type": "quantitative"
+
+      "signals": [
+        {
+          "name": "tooltip",
+          "value": {},
+          "on": [
+            { "events": "rect:mouseover", "update": "datum" },
+            { "events": "rect:mouseout", "update": "{}" }
+          ]
         }
-      },
-      "config": {
-        "range": {
-          "heatmap": {
-            "scheme": "greenblue"
+      ],
+
+      "scales": [
+        {
+          "name": "xscale",
+          "type": "band",
+          "domain": { "data": "table", "field": "category" },
+          "range": "width",
+          "padding": 0.05,
+          "round": true
+        },
+        {
+          "name": "yscale",
+          "domain": { "data": "table", "field": "amount" },
+          "nice": true,
+          "range": "height"
+        }
+      ],
+
+      "axes": [
+        { "orient": "bottom", "scale": "xscale" },
+        { "orient": "left", "scale": "yscale" }
+      ],
+
+      "marks": [
+        {
+          "type": "rect",
+          "from": { "data": "table" },
+          "encode": {
+            "enter": {
+              "x": { "scale": "xscale", "field": "category" },
+              "width": { "scale": "xscale", "band": 1 },
+              "y": { "scale": "yscale", "field": "amount" },
+              "y2": { "scale": "yscale", "value": 0 }
+            },
+            "update": {
+              "fill": { "value": "steelblue" }
+            },
+            "hover": {
+              "fill": { "value": "red" }
+            }
           }
         },
-        "view": {
-          "stroke": "transparent"
+        {
+          "type": "text",
+          "encode": {
+            "enter": {
+              "align": { "value": "center" },
+              "baseline": { "value": "bottom" },
+              "fill": { "value": "#333" }
+            },
+            "update": {
+              "x": {
+                "scale": "xscale",
+                "signal": "tooltip.category",
+                "band": 0.5
+              },
+              "y": {
+                "scale": "yscale",
+                "signal": "tooltip.amount",
+                "offset": -2
+              },
+              "text": { "signal": "tooltip.amount" },
+              "fillOpacity": [
+                { "test": "datum === tooltip", "value": 0 },
+                { "value": 1 }
+              ]
+            }
+          }
         }
-      }
+      ]
+    }
+  },
+  {
+    "url": "https://gist.github.com/italo-batista/bf8358c81bb9c58526a9ea06a5bfbde4",
+    "title": "Bar Chart Vis",
+    "declarationJson": {
+      "$schema": "https://vega.github.io/schema/vega/v4.json",
+      "width": 800,
+      "height": 400,
+      "padding": 0,
+
+      "data": [
+        {
+          "name": "table",
+          "values": [
+            "Declarative visualization grammars can accelerate development, facilitate retargeting across platforms, and allow language-level optimizations. However, existing declarative visualization languages are primarily concerned with visual encoding, and rely on imperative event handlers for interactive behaviors. In response, we introduce a model of declarative interaction design for data visualizations. Adopting methods from reactive programming, we model low-level events as composable data streams from which we form higher-level semantic signals. Signals feed predicates and scale inversions, which allow us to generalize interactive selections at the level of item geometry (pixels) into interactive queries over the data domain. Production rules then use these queries to manipulate the visualization’s appearance. To facilitate reuse and sharing, these constructs can be encapsulated as named interactors: standalone, purely declarative specifications of interaction techniques. We assess our model’s feasibility and expressivity by instantiating it with extensions to the Vega visualization grammar. Through a diverse range of examples, we demonstrate coverage over an established taxonomy of visualization interaction techniques.",
+            "We present Reactive Vega, a system architecture that provides the first robust and comprehensive treatment of declarative visual and interaction design for data visualization. Starting from a single declarative specification, Reactive Vega constructs a dataflow graph in which input data, scene graph elements, and interaction events are all treated as first-class streaming data sources. To support expressive interactive visualizations that may involve time-varying scalar, relational, or hierarchical data, Reactive Vega’s dataflow graph can dynamically re-write itself at runtime by extending or pruning branches in a data-driven fashion. We discuss both compile- and run-time optimizations applied within Reactive Vega, and share the results of benchmark studies that indicate superior interactive performance to both D3 and the original, non-reactive Vega system.",
+            "We present Vega-Lite, a high-level grammar that enables rapid specification of interactive data visualizations. Vega-Lite combines a traditional grammar of graphics, providing visual encoding rules and a composition algebra for layered and multi-view displays, with a novel grammar of interaction. Users specify interactive semantics by composing selections. In Vega-Lite, a selection is an abstraction that defines input event processing, points of interest, and a predicate function for inclusion testing. Selections parameterize visual encodings by serving as input data, defining scale extents, or by driving conditional logic. The Vega-Lite compiler automatically synthesizes requisite data flow and event handling logic, which users can override for further customization. In contrast to existing reactive specifications, Vega-Lite selections decompose an interaction design into concise, enumerable semantic units. We evaluate Vega-Lite through a range of examples, demonstrating succinct specification of both customized interaction methods and common techniques such as panning, zooming, and linked selection."
+          ],
+          "transform": [
+            {
+              "type": "countpattern",
+              "field": "data",
+              "case": "upper",
+              "pattern": "[\\w']{3,}",
+              "stopwords": "(i|me|my|myself|we|us|our|ours|ourselves|you|your|yours|yourself|yourselves|he|him|his|himself|she|her|hers|herself|it|its|itself|they|them|their|theirs|themselves|what|which|who|whom|whose|this|that|these|those|am|is|are|was|were|be|been|being|have|has|had|having|do|does|did|doing|will|would|should|can|could|ought|i'm|you're|he's|she's|it's|we're|they're|i've|you've|we've|they've|i'd|you'd|he'd|she'd|we'd|they'd|i'll|you'll|he'll|she'll|we'll|they'll|isn't|aren't|wasn't|weren't|hasn't|haven't|hadn't|doesn't|don't|didn't|won't|wouldn't|shan't|shouldn't|can't|cannot|couldn't|mustn't|let's|that's|who's|what's|here's|there's|when's|where's|why's|how's|a|an|the|and|but|if|or|because|as|until|while|of|at|by|for|with|about|against|between|into|through|during|before|after|above|below|to|from|up|upon|down|in|out|on|off|over|under|again|further|then|once|here|there|when|where|why|how|all|any|both|each|few|more|most|other|some|such|no|nor|not|only|own|same|so|than|too|very|say|says|said|shall)"
+            },
+            {
+              "type": "formula",
+              "as": "angle",
+              "expr": "[-45, 0, 45][~~(random() * 3)]"
+            },
+            {
+              "type": "formula",
+              "as": "weight",
+              "expr": "if(datum.text=='VEGA', 600, 300)"
+            }
+          ]
+        }
+      ],
+
+      "scales": [
+        {
+          "name": "color",
+          "type": "ordinal",
+          "domain": { "data": "table", "field": "text" },
+          "range": ["#d5a928", "#652c90", "#939597"]
+        }
+      ],
+
+      "marks": [
+        {
+          "type": "text",
+          "from": { "data": "table" },
+          "encode": {
+            "enter": {
+              "text": { "field": "text" },
+              "align": { "value": "center" },
+              "baseline": { "value": "alphabetic" },
+              "fill": { "scale": "color", "field": "text" }
+            },
+            "update": {
+              "fillOpacity": { "value": 1 }
+            },
+            "hover": {
+              "fillOpacity": { "value": 0.5 }
+            }
+          },
+          "transform": [
+            {
+              "type": "wordcloud",
+              "size": [800, 400],
+              "text": { "field": "text" },
+              "rotate": { "field": "datum.angle" },
+              "font": "Helvetica Neue, Arial",
+              "fontSize": { "field": "datum.count" },
+              "fontWeight": { "field": "datum.weight" },
+              "fontSizeRange": [12, 56],
+              "padding": 2
+            }
+          ]
+        }
+      ]
     }
   }
 ]
