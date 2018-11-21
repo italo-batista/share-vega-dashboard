@@ -13,7 +13,7 @@ class VisGrid extends React.Component {
 
   render() {
     var listVisz = this.visz.map(vis => (
-      <div className="col-6	col-sm-4 col-md-3	col-lg-2">
+      <div className="col-12 col-sm-6 col-md-3 col-lg-2">
         <Visualization
           key={vis.url}
           title={vis.title}

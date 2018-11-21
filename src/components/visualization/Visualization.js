@@ -16,7 +16,7 @@ class Visualization extends React.Component {
           visDeclaration={this.props.visDeclaration}
         />
         <div>
-          <div>Title: {this.props.title}</div>
+          <div>{this.props.title}</div>
           <div>buttons...</div>
         </div>
       </div>

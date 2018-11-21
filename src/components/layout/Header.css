@@ -3,7 +3,10 @@
   flex-direction: column;
   align-items: left;
   justify-content: left;
+
   font-size: calc(10px + 2vmin);
   color: #292c2f;
   font-family: "Montserrat", sans-serif;
+
+  margin: 1rem 1rem;
 }
