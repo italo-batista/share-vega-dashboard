@@ -20,11 +20,9 @@ class Visualization extends React.Component {
           <Card.Content>
             <Card.Header>{this.props.title}</Card.Header>
           </Card.Content>
-          <Card.Content extra>
-            <a>
-              <Icon name="user" />
-              22 Friends
-            </a>
+          <Card.Content extra>                        
+            <Icon name="star" />            
+            <Icon name="fork" />
           </Card.Content>
         </Card>
       </div>

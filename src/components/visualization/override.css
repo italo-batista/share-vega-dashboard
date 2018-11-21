@@ -2,3 +2,17 @@ div.vega-embed > canvas {
   width: 200px;
   height: 200px;
 }
+
+div.extra.content {
+  font-size: 1.5vh;
+}
+@media (min-width: 980px) {
+  div.extra.content {
+    font-size: 1.5vh;
+  }
+}
+@media (max-width: 375px) {
+  div.extra.content {
+    font-size: 0.5vh;
+  }
+}
