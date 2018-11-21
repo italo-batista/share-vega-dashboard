@@ -1,6 +1,7 @@
 import React from "react";
 import VisPreview from "./VisPreview";
 import "./Visualization.css";
+import { Card, Icon } from "semantic-ui-react";
 
 class Visualization extends React.Component {
   constructor(props) {
@@ -11,14 +12,21 @@ class Visualization extends React.Component {
   render() {
     return (
       <div className="vis-box">
-        <VisPreview
-          className="vis-preview"
-          visDeclaration={this.props.visDeclaration}
-        />
-        <div>
-          <div>{this.props.title}</div>
-          <div>buttons...</div>
-        </div>
+        <Card>
+          <VisPreview
+            className="vis-preview"
+            visDeclaration={this.props.visDeclaration}
+          />
+          <Card.Content>
+            <Card.Header>{this.props.title}</Card.Header>
+          </Card.Content>
+          <Card.Content extra>
+            <a>
+              <Icon name="user" />
+              22 Friends
+            </a>
+          </Card.Content>
+        </Card>
       </div>
     );
   }

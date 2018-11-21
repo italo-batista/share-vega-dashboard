@@ -1,7 +1,7 @@
 import React from "react";
 import Visualization from "../visualization/Visualization";
-
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./VisGrid.css";
 
 class VisGrid extends React.Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class VisGrid extends React.Component {
 
   render() {
     var listVisz = this.visz.map(vis => (
-      <div className="col-12 col-sm-6 col-md-3 col-lg-2">
+      <div className="col-12 col-sm-6 col-md-3 col-lg-2 card-container">
         <Visualization
           key={vis.url}
           title={vis.title}

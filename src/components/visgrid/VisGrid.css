@@ -1,0 +1,8 @@
+.card-container {
+  margin: 2px 30px;
+}
+@media (max-width: 980px) {
+  .card-container {
+    margin: 2px 15px;
+  }
+}
