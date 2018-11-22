@@ -1,6 +1,6 @@
 import React from "react";
 import VisPreview from "./VisPreview";
-import "./Visualization.css";
+import "./VisCard.css";
 import { Card, Icon } from "semantic-ui-react";
 
 class Visualization extends React.Component {
@@ -19,10 +19,10 @@ class Visualization extends React.Component {
           />
           <Card.Content>
             <Card.Header>{this.props.title}</Card.Header>
-          </Card.Content>
-          <Card.Content extra>                        
-            <Icon name="star" />            
-            <Icon name="fork" />
+            <Card.Meta extra>
+              <Icon name="star" />
+              <Icon name="fork" />
+            </Card.Meta>
           </Card.Content>
         </Card>
       </div>

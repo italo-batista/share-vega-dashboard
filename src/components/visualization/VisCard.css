@@ -1,0 +1,21 @@
+.vis-box {
+  max-width: 300px;
+  width: 200px;
+  height: 300px;
+  overflow: hidden;
+  font-size: 1vh;
+}
+@media (min-width: 980px) {
+  .vis-box {
+    font-size: 1.3vh;
+  }
+}
+@media (max-width: 375px) {
+  .vis-box {
+    font-size: 0.8vh;
+  }
+}
+
+.vis-preview {
+  width: 100% !important;
+}
