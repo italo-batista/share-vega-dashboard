@@ -1,5 +1,5 @@
 import React from "react";
-import Visualization from "../visualization/Visualization";
+import VisCard from "../visualization/VisCard";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./VisGrid.css";
 
@@ -13,8 +13,8 @@ class VisGrid extends React.Component {
 
   render() {
     var listVisz = this.visz.map(vis => (
-      <div className="col-12 col-sm-6 col-md-3 col-lg-2 card-container">
-        <Visualization
+      <div className="col-12 .col-xs-6 col-sm-4 col-md-3 col-lg-2 card-container">
+        <VisCard
           key={vis.url}
           title={vis.title}
           url={vis.url}
@@ -23,7 +23,7 @@ class VisGrid extends React.Component {
       </div>
     ));
 
-    return <div className="row"> {listVisz} </div>;
+    return <div className="row flex-container"> {listVisz} </div>;
   }
 }
 

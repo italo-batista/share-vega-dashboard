@@ -11,7 +11,7 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div className="flex-container">
+      <div>
         <VisGrid listVisz={dataVisz} />
       </div>
     );
