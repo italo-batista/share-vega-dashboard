@@ -2,6 +2,7 @@
   {
     "url": "https://gist.github.com/italo-batista/bf8358c81bb9c58526a9ea06a5bfbde4",
     "title": "Flipped bar chart",
+    "dateLastUpdate": "2018-10-10",
     "declarationJson": {
       "$schema": "https://vega.github.io/schema/vega/v4.json",
       "width": 300,
@@ -133,6 +134,7 @@
   {
     "url": "https://gist.github.com/italo-batista/bf8358c81bb9c58526a9ea06a5bfbde4",
     "title": "Child Bride",
+    "dateLastUpdate": "2018-10-10",
     "declarationJson": {
       "$schema": "https://vega.github.io/schema/vega/v4.json",
       "width": 500,
@@ -229,6 +231,7 @@
   {
     "url": "https://gist.github.com/italo-batista/bf8358c81bb9c58526a9ea06a5bfbde4",
     "title": "Bar Chart Vis",
+    "dateLastUpdate": "2018-10-10",
     "declarationJson": {
       "$schema": "https://vega.github.io/schema/vega/v4.json",
       "width": 400,
@@ -336,6 +339,7 @@
   {
     "url": "https://gist.github.com/italo-batista/bf8358c81bb9c58526a9ea06a5bfbde4",
     "title": "Wordcloud",
+    "dateLastUpdate": "2018-10-10",
     "declarationJson": {
       "$schema": "https://vega.github.io/schema/vega/v4.json",
       "width": 800,
@@ -419,6 +423,7 @@
   {
     "url": "https://gist.github.com/italo-batista/bf8358c81bb9c58526a9ea06a5bfbde4",
     "title": "Wordcloud",
+    "dateLastUpdate": "2018-10-10",
     "declarationJson": {
       "$schema": "https://vega.github.io/schema/vega/v4.json",
       "width": 800,
@@ -502,6 +507,7 @@
   {
     "url": "https://gist.github.com/italo-batista/bf8358c81bb9c58526a9ea06a5bfbde4",
     "title": "Wordcloud",
+    "dateLastUpdate": "2018-10-10",
     "declarationJson": {
       "$schema": "https://vega.github.io/schema/vega/v4.json",
       "width": 800,
@@ -585,6 +591,7 @@
   {
     "url": "https://gist.github.com/italo-batista/bf8358c81bb9c58526a9ea06a5bfbde4",
     "title": "Wordcloud",
+    "dateLastUpdate": "2018-10-10",
     "declarationJson": {
       "$schema": "https://vega.github.io/schema/vega/v4.json",
       "width": 800,
