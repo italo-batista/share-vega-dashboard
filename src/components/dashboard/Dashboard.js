@@ -1,7 +1,7 @@
 import React from "react";
-import VisGrid from "./../visgrid/VisGrid";
-import dataVisz from "../../static/data_visz.json";
 import API from "../../api";
+import SortBy from "../frontelements/SortBy";
+import VisGrid from "./../visgrid/VisGrid";
 
 import { Loader } from "semantic-ui-react";
 
@@ -24,6 +24,10 @@ class Dashboard extends React.Component {
     });
   }
 
+  handleDropDownClick(optName) {
+    console.log(optName);
+  }
+
   render() {
     let content;
     if (this.state.isLoaded) {
@@ -32,7 +36,16 @@ class Dashboard extends React.Component {
       content = <Loader active>Loading</Loader>;
     }
 
-    return <div>{content}</div>;
+    const sortOptions = ["StarAsc", "StarDesc", "Date"];
+
+    return (
+      <div>
+        <div className="end-buttons">
+          <SortBy options={sortOptions} onClick={this.handleDropDownClick} />
+        </div>
+        {content}
+      </div>
+    );
   }
 }
 

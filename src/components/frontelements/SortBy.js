@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Dropdown } from "semantic-ui-react";
 
+import "./override.css";
+
 class SortBy extends Component {
   constructor(props) {
     super(props);
