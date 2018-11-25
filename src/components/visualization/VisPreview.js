@@ -9,10 +9,11 @@ class VisPreview extends React.Component {
     this.state = {
       vis: null
     };
+    console.log(this.props.visDeclaration);
   }
 
-  componentDidMount() {
-    const spec = this.props.visDeclaration;
+  drawVisPreview(i) {
+    let spec = this.props.visDeclaration;
 
     embed(this.refs.chartContainer, spec, {
       defaultStyle: true,
@@ -20,6 +21,14 @@ class VisPreview extends React.Component {
       width: 200,
       height: 200
     });
+  }
+
+  componentDidMount() {
+    this.drawVisPreview();
+  }
+
+  componentDidUpdate() {
+    this.drawVisPreview();
   }
 
   render() {
