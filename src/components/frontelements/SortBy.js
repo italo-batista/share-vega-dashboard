@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Dropdown } from "semantic-ui-react";
+import { Dropdown, Button } from "semantic-ui-react";
 
 import "./override.css";
 
@@ -16,16 +16,21 @@ class SortBy extends Component {
     ));
 
     return (
-      <Dropdown
-        text="Sort By"
-        icon="ordered list"
-        className="icon"
-        floating
-        labeled
-        button
-      >
-        <Dropdown.Menu>{options}</Dropdown.Menu>
-      </Dropdown>
+      <div>
+        <Button.Group content="Standard" basic>
+          <Dropdown
+            text="Sort By"
+            icon="ordered list"
+            color="violet"
+            className="icon"
+            floating
+            labeled
+            button
+          >
+            <Dropdown.Menu color="violet">{options}</Dropdown.Menu>
+          </Dropdown>
+        </Button.Group>
+      </div>
     );
   }
 }
