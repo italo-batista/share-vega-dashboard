@@ -6,10 +6,6 @@ import "./override.css";
 class VisPreview extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      vis: null
-    };
-    console.log(this.props.visDeclaration);
   }
 
   drawVisPreview(i) {

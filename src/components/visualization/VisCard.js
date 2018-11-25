@@ -19,7 +19,6 @@ class Visualization extends React.Component {
         date: this.state.date,
         visDeclaration: visDeclaration
       });
-      console.log(visDeclaration);
     });
   }
 
