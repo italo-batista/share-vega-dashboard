@@ -17,7 +17,7 @@ class SortBy extends Component {
 
     return (
       <div>
-        <Button.Group content="Standard" basic>
+        <Button.Group basic>
           <Dropdown
             text="Sort By"
             icon="ordered list"

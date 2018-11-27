@@ -10,10 +10,14 @@ class Visualization extends React.Component {
   constructor(props) {
     super(props);
     this.state = { date: new Date(), visDeclaration: "{}" };
+
+    this.getCurrentUser = this.getCurrentUser.bind(this);
+    this.isUserinStars = this.isUserinStars.bind(this);
+    this.handleStarClick = this.handleStarClick.bind(this);
   }
 
   componentDidMount() {
-    axios.get(this.props.vis_decl_url).then(res => {
+    axios.get(this.props.visDeclUrl).then(res => {
       const visDeclaration = res.data;
       this.setState({
         date: this.state.date,
@@ -22,7 +26,35 @@ class Visualization extends React.Component {
     });
   }
 
+  getCurrentUser() {
+    // TO DO
+    return "5bb8f05d6e52fb546a930f96";
+  }
+
+  isUserinStars(userId, visStars) {
+    var userIndex = visStars.indexOf(userId);
+    if (userIndex > -1) {
+      return true;
+    }
+    return false;
+  }
+
+  handleStarClick() {
+    const restMethod = this.isUserinStars(
+      this.getCurrentUser(),
+      this.props.visStars
+    )
+      ? "DELETE"
+      : "POST";
+    this.props.handleStarClick(this.props.visId, restMethod);
+  }
+
   render() {
+    let nStars;
+    if (this.props.visStars.length != 0) {
+      nStars = this.props.visStars.length;
+    }
+
     return (
       <div className="vis-box">
         <Card>
@@ -32,9 +64,11 @@ class Visualization extends React.Component {
           />
           <Card.Content>
             <Card.Header>{this.props.title}</Card.Header>
-            <Card.Meta extra>
-              <Icon name="star" />
-              <Icon name="fork" />
+            <Card.Meta className="container">
+              <div className="row">
+                {nStars} <Icon name="star" onClick={this.handleStarClick} />
+                <Icon name="fork" />
+              </div>
             </Card.Meta>
           </Card.Content>
         </Card>

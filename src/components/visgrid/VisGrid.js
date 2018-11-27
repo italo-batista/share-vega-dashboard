@@ -17,7 +17,13 @@ class VisGrid extends React.Component {
         key={vis.gist_link}
         className="col-12 .col-xs-6 col-sm-4 col-md-3 col-lg-2 card-container"
       >
-        <VisCard title={vis.title} vis_decl_url={vis.gist_link} />
+        <VisCard
+          title={vis.title}
+          visDeclUrl={vis.gist_link}
+          visId={vis._id}
+          visStars={vis.userStars}
+          handleStarClick={this.props.handleStarClick}
+        />
       </div>
     ));
 
