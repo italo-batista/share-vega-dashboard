@@ -1,7 +1,6 @@
 import React from "react";
-import UserMenu from "../auth/UserMenu";
-import SignIn from "../auth/SignIn";
-import { Button } from "semantic-ui-react";
+import UserMenuButton from "../auth/UserMenuButton";
+import SignInButton from "../auth/SignInButton";
 
 import "./Navbar.css";
 
@@ -14,12 +13,19 @@ class Navbar extends React.Component {
   }
 
   render() {
-    let AuthButton = <SignIn />;
+    let AuthButton = <SignInButton />;
     if (this.state.currentUser) {
-      AuthButton = <UserMenu />;
+      AuthButton = <UserMenuButton />;
     }
 
-    return <div className="App-navbar">{AuthButton}</div>;
+    return (
+      <div className="App-navbar">
+        <div className="navbar-container container">
+          <div className="App-header">Share-Vega</div>
+          {AuthButton}
+        </div>
+      </div>
+    );
   }
 }
 
