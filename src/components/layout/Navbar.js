@@ -1,24 +1,25 @@
 import React from "react";
+import UserMenu from "../auth/UserMenu";
+import SignIn from "../auth/SignIn";
+import { Button } from "semantic-ui-react";
+
 import "./Navbar.css";
 
-const LoggedOutView = props => {
-  // if (!props.currentUser) { return ...}
-  return null;
-};
-
-const LoggedInView = props => {
-  // if (!props.currentUser) { return ...}
-  return null;
-};
-
 class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentUser: null
+    };
+  }
+
   render() {
-    return (
-      <div className="App-navbar">
-        <LoggedOutView currentUser={this.props.currentUser} />
-        <LoggedInView currentUser={this.props.currentUser} />
-      </div>
-    );
+    let AuthButton = <SignIn />;
+    if (this.state.currentUser) {
+      AuthButton = <UserMenu />;
+    }
+
+    return <div className="App-navbar">{AuthButton}</div>;
   }
 }
 
