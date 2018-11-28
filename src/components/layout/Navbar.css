@@ -1,7 +1,7 @@
 .App-navbar {
   font-family: "Montserrat", sans-serif;
   height: 8vh;
-  background-color: #292c2f;
+  background-color: #ffffff;
 }
 @media (min-width: 980px) {
   .App-navbar {
@@ -17,7 +17,20 @@
 .navbar-container {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   height: 100%;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+
+  font-size: calc(10px + 2vmin);
+  color: #292c2f;
+  font-family: "Montserrat", sans-serif;
+
+  margin: 1rem 1rem;
 }
