@@ -1,7 +1,17 @@
 .App-navbar {
   font-family: "Montserrat", sans-serif;
-  height: 10vh;
+  height: 8vh;
   background-color: #292c2f;
+}
+@media (min-width: 980px) {
+  .App-navbar {
+    height: 10vh;
+  }
+}
+@media (max-width: 375px) {
+  .App-navbar {
+    height: 6vh;
+  }
 }
 
 .navbar-container {
