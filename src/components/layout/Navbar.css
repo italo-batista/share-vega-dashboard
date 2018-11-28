@@ -3,23 +3,25 @@
   height: 8vh;
   background-color: #ffffff;
 }
-@media (min-width: 980px) {
-  .App-navbar {
-    height: 10vh;
-  }
-}
-@media (max-width: 375px) {
-  .App-navbar {
-    height: 6vh;
-  }
-}
 
 .navbar-container {
+  list-style: none;
   display: flex;
+
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 100%;
+}
+@media (max-width: 800px) {
+  .navbar-container {
+    justify-content: space-around;
+  }
+}
+@media (max-width: 600px) {
+  .navbar-container {
+    flex-direction: column;
+  }
 }
 
 .App-header {
