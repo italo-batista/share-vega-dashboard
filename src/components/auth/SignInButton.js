@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Button, Header, Image, Modal } from "semantic-ui-react";
-
+import { Button, Modal, Form } from "semantic-ui-react";
+import API from "../../api"
 import "./override.css";
 
 const inlineStyle = {
@@ -8,14 +8,35 @@ const inlineStyle = {
     marginTop: "auto !important",
     marginLeft: "auto",
     marginRight: "auto",
-    height: "15em"
+    height: "20em"
   }
 };
 
 class SignIn extends Component {
   constructor(props) {
     super(props);
-    this.state = { open: false };
+    this.state = { open: false, formEmail: '', formPassword:'' };
+  }
+
+  singIn(user) {
+    API.post("auth", user).then(res => {
+      console.log(res.data);
+    });
+  }
+
+  handleFormChange = (e, { name, value }) => this.setState({ [name]: value })
+
+  handleFormSubmit = () => {
+    const { formEmail, formPassword } = this.state;
+    
+    const user = {
+      username: formEmail,
+      password: formPassword
+    }
+    this.singIn(user);
+
+    this.setState({ formEmail: '', formPassword: '' });
+    this.closeModal();
   }
 
   showModal = () => this.setState({ open: true });
@@ -23,7 +44,7 @@ class SignIn extends Component {
   closeModal = () => this.setState({ open: false });
 
   render() {
-    const { open } = this.state;
+    const { open, formEmail, formPassword } = this.state;    
 
     return (
       <div>
@@ -41,14 +62,20 @@ class SignIn extends Component {
           <Modal.Header>Share-Vega</Modal.Header>
           <Modal.Content>
             <Modal.Description>
-              <p>Beleza</p>
-              <Button
-                positive
-                icon="checkmark"
-                labelPosition="left"
-                content="Sign In"
-                onClick={this.closeModal}
-              />
+
+              <Form>
+                <Form.Input label='Email' value={formEmail} name='formEmail' placeholder='user@mail.com' onChange={this.handleFormChange} />
+                <Form.Input label='Password' value={formPassword} name='formPassword' type='password' onChange={this.handleFormChange} />
+                <Form.Button
+                  type="button" 
+                  positive
+                  icon="github"
+                  labelPosition="left"
+                  content="Sign In"  
+                  onClick={this.handleFormSubmit}                
+                />
+              </Form>
+
             </Modal.Description>
           </Modal.Content>
         </Modal>
