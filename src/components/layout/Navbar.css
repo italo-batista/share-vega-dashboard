@@ -20,7 +20,7 @@
 }
 @media (max-width: 600px) {
   .navbar-container {
-    flex-direction: column;
+    /* flex-direction: column; */
   }
 }
 
@@ -35,4 +35,8 @@
   font-family: "Montserrat", sans-serif;
 
   margin: 1rem 1rem;
+}
+
+.dimmed.dimmable > .ui.modals.dimmer.visible {
+  display: flex !important;
 }

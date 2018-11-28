@@ -93,9 +93,9 @@ class Dashboard extends React.Component {
     const sortOptions = ["StarAsc", "StarDesc", "Date"];
 
     return (
-      <div>
+      <div className="y-margin-container">
         <div className="end-buttons">
-          <SortBy options={sortOptions} onClick={this.handleDropDownClick} />
+          {/* <SortBy options={sortOptions} onClick={this.handleDropDownClick} /> */}
         </div>
         {content}
       </div>
