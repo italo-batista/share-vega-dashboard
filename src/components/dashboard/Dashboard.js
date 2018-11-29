@@ -27,8 +27,7 @@ class Dashboard extends React.Component {
   }
 
   getCurrentUser() {
-    // TO DO
-    return "5bb8f05d6e52fb546a930f96";
+    return this.props.currentUser;
   }
 
   handleDropDownClick(optName) {
@@ -57,7 +56,8 @@ class Dashboard extends React.Component {
       for (var vis of visz) {
         if (vis._id === visId) {
           vis.userStars = vis.userStars.filter(userId => {
-            return userId == this.getCurrentUser();
+            let current;
+            return userId == this.getCurrentUser()._id;
           });
         }
       }
@@ -68,7 +68,7 @@ class Dashboard extends React.Component {
   handleStarClick(visId, restMethod) {
     const bodyRequest = {
       visualization_id: visId,
-      user_id: this.getCurrentUser()
+      user_id: this.getCurrentUser()._id
     };
     if (restMethod == "POST") {
       this.starVis(bodyRequest);

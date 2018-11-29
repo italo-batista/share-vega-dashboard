@@ -27,7 +27,7 @@ class Visualization extends React.Component {
   }
 
   getCurrentUser() {
-    // TO DO
+    // TO DO (using Context API)
     return "5bb8f05d6e52fb546a930f96";
   }
 

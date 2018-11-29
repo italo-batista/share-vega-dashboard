@@ -20,7 +20,10 @@ class SignIn extends Component {
 
   singIn(user) {
     API.post("auth", user).then(res => {
-      console.log(res.data);
+      const signedUser = res.data;
+      this.setState({ formEmail: "", formPassword: "" });
+      this.props.setCurrentUser(signedUser);
+      this.closeModal();
     });
   }
 
@@ -34,9 +37,6 @@ class SignIn extends Component {
       password: formPassword
     };
     this.singIn(user);
-
-    this.setState({ formEmail: "", formPassword: "" });
-    this.closeModal();
   };
 
   showModal = () => this.setState({ open: true });
