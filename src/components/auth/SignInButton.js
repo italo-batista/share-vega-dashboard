@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Modal, Form } from "semantic-ui-react";
-import API from "../../api"
+import API from "../../api";
 import "./override.css";
 
 const inlineStyle = {
@@ -15,7 +15,7 @@ const inlineStyle = {
 class SignIn extends Component {
   constructor(props) {
     super(props);
-    this.state = { open: false, formEmail: '', formPassword:'' };
+    this.state = { open: false, formEmail: "", formPassword: "" };
   }
 
   singIn(user) {
@@ -24,27 +24,27 @@ class SignIn extends Component {
     });
   }
 
-  handleFormChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleFormChange = (e, { name, value }) => this.setState({ [name]: value });
 
   handleFormSubmit = () => {
     const { formEmail, formPassword } = this.state;
-    
+
     const user = {
       username: formEmail,
       password: formPassword
-    }
+    };
     this.singIn(user);
 
-    this.setState({ formEmail: '', formPassword: '' });
+    this.setState({ formEmail: "", formPassword: "" });
     this.closeModal();
-  }
+  };
 
   showModal = () => this.setState({ open: true });
 
   closeModal = () => this.setState({ open: false });
 
   render() {
-    const { open, formEmail, formPassword } = this.state;    
+    const { open, formEmail, formPassword } = this.state;
 
     return (
       <div>
@@ -62,20 +62,30 @@ class SignIn extends Component {
           <Modal.Header>Share-Vega</Modal.Header>
           <Modal.Content>
             <Modal.Description>
-
               <Form>
-                <Form.Input label='Email' value={formEmail} name='formEmail' placeholder='user@mail.com' onChange={this.handleFormChange} />
-                <Form.Input label='Password' value={formPassword} name='formPassword' type='password' onChange={this.handleFormChange} />
+                <Form.Input
+                  label="Email"
+                  value={formEmail}
+                  name="formEmail"
+                  placeholder="user@mail.com"
+                  onChange={this.handleFormChange}
+                />
+                <Form.Input
+                  label="Password"
+                  value={formPassword}
+                  name="formPassword"
+                  type="password"
+                  onChange={this.handleFormChange}
+                />
                 <Form.Button
-                  type="button" 
+                  type="button"
                   positive
                   icon="github"
                   labelPosition="left"
-                  content="Sign In"  
-                  onClick={this.handleFormSubmit}                
+                  content="Sign In"
+                  onClick={this.handleFormSubmit}
                 />
               </Form>
-
             </Modal.Description>
           </Modal.Content>
         </Modal>
