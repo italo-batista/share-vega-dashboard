@@ -1,7 +1,10 @@
 import React, { Component, createContext } from "react";
+import { Switch, Route } from "react-router-dom";
+
 import "./App.css";
 import Navbar from "./layout/Navbar";
 import Dashboard from "./dashboard/Dashboard";
+import VisView from "./visualization/VisView";
 
 class App extends Component {
   constructor(props) {
@@ -20,11 +23,18 @@ class App extends Component {
   };
 
   render() {
+    const DashboardComp = props => {
+      return <Dashboard currentUser={this.state.currentUser} />;
+    };
+
     return (
       <div className="App">
         <Navbar setCurrentUser={this.setCurrentUser} />
         <div className="container">
-          <Dashboard currentUser={this.state.currentUser} />
+          <Switch>
+            <Route exact path="/" render={DashboardComp} />
+            <Route path="/visualization/:vis_id" component={VisView} />
+          </Switch>
         </div>
       </div>
     );

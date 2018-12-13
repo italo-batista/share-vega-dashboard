@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import UserMenuButton from "../auth/UserMenuButton";
 import SignInButton from "../auth/SignInButton";
 
@@ -23,7 +25,9 @@ class Navbar extends React.Component {
     return (
       <div className="App-navbar">
         <div className="navbar-container container">
-          <div className="App-header">Share-Vega</div>
+          <Link to="/">
+            <div className="App-header">Share-Vega</div>
+          </Link>
           {AuthButton}
         </div>
       </div>

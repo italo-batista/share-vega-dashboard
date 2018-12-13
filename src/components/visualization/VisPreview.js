@@ -3,6 +3,8 @@ import embed from "vega-embed";
 import * as vega from "vega";
 import "./override.css";
 
+import { Link } from "react-router-dom";
+
 class VisPreview extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +30,11 @@ class VisPreview extends React.Component {
   }
 
   render() {
-    return <div ref="chartContainer" />;
+    return (
+      <Link to="/visualization">
+        <div ref="chartContainer" />
+      </Link>
+    );
   }
 }
 
