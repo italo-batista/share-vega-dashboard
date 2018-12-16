@@ -4,6 +4,8 @@ import axios from "axios";
 import API from "../../api";
 import VisPreview from "./VisPreview";
 
+import "./VisView.css";
+
 class VisView extends React.Component {
   constructor(props) {
     super(props);
@@ -38,15 +40,15 @@ class VisView extends React.Component {
   render() {
     return (
       <div className="container-two-children container">
+        <div className="container-child white-box">
+          <pre>{JSON.stringify(this.state.visDeclaration, undefined, 2)}</pre>
+        </div>
         <div className="container-child">
           <VisPreview
             className="vis-preview"
             visDeclaration={this.state.visDeclaration}
             visId={this.state.visualization._id}
           />
-        </div>
-        <div className="container-child">
-          <pre>{JSON.stringify(this.state.visDeclaration, undefined, 2)}</pre>
         </div>
       </div>
     );
