@@ -5,6 +5,8 @@ import { Button } from "semantic-ui-react";
 import UserMenuButton from "../auth/UserMenuButton";
 import SignInButton from "../auth/SignInButton";
 
+import {UserContext} from "../auth/UserContext"
+
 import "./Navbar.css";
 
 class Navbar extends React.Component {

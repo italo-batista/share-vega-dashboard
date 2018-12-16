@@ -10,8 +10,7 @@ class Visualization extends React.Component {
   constructor(props) {
     super(props);
     this.state = { date: new Date(), visDeclaration: "{}" };
-
-    this.getCurrentUser = this.getCurrentUser.bind(this);
+    this.getCurrentUserId = this.getCurrentUserId.bind(this);
     this.isUserinStars = this.isUserinStars.bind(this);
     this.handleStarClick = this.handleStarClick.bind(this);
   }
@@ -26,9 +25,8 @@ class Visualization extends React.Component {
     });
   }
 
-  getCurrentUser() {
-    // TO DO (using Context API)
-    return "5bb8f05d6e52fb546a930f96";
+  getCurrentUserId() {
+    return this.props.currentUser._id;
   }
 
   isUserinStars(userId, visStars) {
@@ -41,7 +39,7 @@ class Visualization extends React.Component {
 
   handleStarClick() {
     const restMethod = this.isUserinStars(
-      this.getCurrentUser(),
+      this.getCurrentUserId(),
       this.props.visStars
     )
       ? "DELETE"
