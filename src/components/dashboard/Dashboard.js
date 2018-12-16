@@ -31,7 +31,7 @@ class Dashboard extends React.Component {
   }
 
   handleDropDownClick(optName) {
-    // TO DO
+    // TODO
     console.log(optName);
   }
 
@@ -39,7 +39,7 @@ class Dashboard extends React.Component {
     const visId = bodyRequest.visualization_id;
     API.post("star", bodyRequest).then(res => {
       let visz = this.state.visualizations;
-      for (var vis of visz) {
+      for (let vis of visz) {
         if (vis._id === visId) {
           vis.userStars = vis.userStars.concat(this.getCurrentUser());
         }
@@ -57,7 +57,7 @@ class Dashboard extends React.Component {
         if (vis._id === visId) {
           vis.userStars = vis.userStars.filter(userId => {
             let current;
-            return userId == this.getCurrentUser()._id;
+            return userId === this.getCurrentUser()._id;
           });
         }
       }
@@ -70,9 +70,9 @@ class Dashboard extends React.Component {
       visualization_id: visId,
       user_id: this.getCurrentUser()._id
     };
-    if (restMethod == "POST") {
+    if (restMethod === "POST") {
       this.starVis(bodyRequest);
-    } else if (restMethod == "DELETE") {
+    } else if (restMethod === "DELETE") {
       this.unstarVis(bodyRequest);
     }
   }
