@@ -1,30 +1,27 @@
 import React, { Component } from "react";
 import { Form } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import API from "../../api";
 
 class SignUpForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-  }
-
-  resetState = () => {
-    this.setState({
+    this.state = {
       formName: "",
       formUsername: "",
       formEmail: "",
-      formPassword: ""
-    });
-  };
+      formPassword: "",
+      userCreated: false
+    };
+  }
 
   singUp(user) {
     API.post("user", user).then(res => {
       const signedUser = res.data;
-      this.resetState();
-      this.props.setCurrentUser(signedUser);
-      this.closeModal();
+      this.setState({ userCreated: true });
+      // this.props.setCurrentUser(signedUser);
     });
   }
 
@@ -44,6 +41,11 @@ class SignUpForm extends Component {
 
   render() {
     const { formName, formUsername, formEmail, formPassword } = this.state;
+
+    let redirectIfSigenUp;
+    if (this.state.userCreated) {
+      redirectIfSigenUp = <Redirect to={{ pathname: "/" }} />;
+    }
 
     return (
       <div>
@@ -84,6 +86,7 @@ class SignUpForm extends Component {
             onClick={this.handleFormSubmit}
           />
         </Form>
+        {redirectIfSigenUp}
       </div>
     );
   }
