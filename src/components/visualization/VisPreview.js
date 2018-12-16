@@ -12,13 +12,14 @@ class VisPreview extends React.Component {
 
   drawVisPreview(i) {
     let spec = this.props.visDeclaration;
-
-    embed(this.refs.chartContainer, spec, {
-      defaultStyle: true,
-      renderer: "canvas",
-      width: 200,
-      height: 200
-    });
+    if (spec !== undefined) {
+      embed(this.refs.chartContainer, spec, {
+        defaultStyle: true,
+        renderer: "canvas",
+        width: 200,
+        height: 200
+      });
+    }
   }
 
   componentDidMount() {
