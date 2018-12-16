@@ -43,7 +43,7 @@ class VisView extends React.Component {
         <div className="container-child white-box">
           <pre>{JSON.stringify(this.state.visDeclaration, undefined, 2)}</pre>
         </div>
-        <div className="container-child">
+        <div className="container-child container-centered-children">
           <VisPreview
             className="vis-preview"
             visDeclaration={this.state.visDeclaration}
