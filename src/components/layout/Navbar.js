@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Button } from "semantic-ui-react";
 
 import UserMenuButton from "../auth/UserMenuButton";
 import SignInButton from "../auth/SignInButton";
@@ -13,11 +14,18 @@ class Navbar extends React.Component {
   }
 
   render() {
-    let AuthButton = (
-      <SignInButton setCurrentUser={this.props.setCurrentUser} />
+    let AuthButtons = (
+      <div className="navbar-container">
+        <SignInButton setCurrentUser={this.props.setCurrentUser} />
+        <Link to="/">
+          <Button size="tiny" onClick={this.showModal}>
+            Sign up
+          </Button>
+        </Link>
+      </div>
     );
     if (this.state.currentUser) {
-      AuthButton = (
+      AuthButtons = (
         <UserMenuButton setCurrentUser={this.props.setCurrentUser} />
       );
     }
@@ -28,7 +36,7 @@ class Navbar extends React.Component {
           <Link to="/">
             <div className="App-header">Share-Vega</div>
           </Link>
-          {AuthButton}
+          {AuthButtons}
         </div>
       </div>
     );
