@@ -18,9 +18,7 @@ class Navbar extends React.Component {
       <div className="navbar-container">
         <SignInButton setCurrentUser={this.props.setCurrentUser} />
         <Link to="/signup">
-          <Button size="tiny" onClick={this.showModal}>
-            Sign up
-          </Button>
+          <Button size="tiny">Sign up</Button>
         </Link>
       </div>
     );
