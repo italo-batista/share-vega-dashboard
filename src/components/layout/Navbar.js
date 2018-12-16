@@ -17,7 +17,7 @@ class Navbar extends React.Component {
     let AuthButtons = (
       <div className="navbar-container">
         <SignInButton setCurrentUser={this.props.setCurrentUser} />
-        <Link to="/">
+        <Link to="/signup">
           <Button size="tiny" onClick={this.showModal}>
             Sign up
           </Button>
