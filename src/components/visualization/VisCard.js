@@ -61,6 +61,7 @@ class Visualization extends React.Component {
           <VisPreview
             className="vis-preview"
             visDeclaration={this.state.visDeclaration}
+            visId={this.props.visId}
           />
           <Card.Content>
             <Card.Header>{this.props.title}</Card.Header>

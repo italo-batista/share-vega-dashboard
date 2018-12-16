@@ -32,7 +32,7 @@ class VisPreview extends React.Component {
 
   render() {
     return (
-      <Link to="/visualization">
+      <Link to={"/visualization/" + this.props.visId}>
         <div ref="chartContainer" />
       </Link>
     );
