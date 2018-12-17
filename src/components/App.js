@@ -6,19 +6,19 @@ import Navbar from "./layout/Navbar";
 import Dashboard from "./dashboard/Dashboard";
 import VisView from "./visualization/VisView";
 import SignUpView from "./auth/SignUpView";
-import {UserContext} from "./auth/UserContext"
+import { UserContext } from "./auth/UserContext";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentUser: "",
-      setCurrentUser: (user) => {
+      setCurrentUser: user => {
         this.setState(() => ({ currentUser: user }));
       }
     };
   }
-  
+
   render() {
     const DashboardComp = props => {
       return <Dashboard currentUser={this.state.currentUser} />;
@@ -27,13 +27,18 @@ class App extends Component {
     const SignUpViewComp = props => {
       return <SignUpView />;
     };
-  
+
     let NavbarComp = (
       <UserContext.Consumer>
-        {(context) => <Navbar setCurrentUser={context.setCurrentUser} currentUser={context.currentUser}/>}
+        {context => (
+          <Navbar
+            setCurrentUser={context.setCurrentUser}
+            currentUser={context.currentUser}
+          />
+        )}
       </UserContext.Consumer>
     );
-    
+
     return (
       <div className="App">
         <UserContext.Provider value={this.state}>
