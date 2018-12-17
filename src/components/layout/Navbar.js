@@ -4,7 +4,6 @@ import { Button } from "semantic-ui-react";
 
 import UserMenuButton from "../auth/UserMenuButton";
 import SignInButton from "../auth/SignInButton";
-
 import {UserContext} from "../auth/UserContext"
 
 import "./Navbar.css";
@@ -14,7 +13,7 @@ class Navbar extends React.Component {
     super(props);
     this.state = { currentUser: null };
   }
-
+  
   render() {
     let AuthButtons = (
       <div className="navbar-container">
@@ -24,10 +23,8 @@ class Navbar extends React.Component {
         </Link>
       </div>
     );
-    if (this.state.currentUser) {
-      AuthButtons = (
-        <UserMenuButton setCurrentUser={this.props.setCurrentUser} />
-      );
+    if (this.props.currentUser) {
+      AuthButtons = (<UserMenuButton setCurrentUser={this.props.setCurrentUser} />);
     }
 
     return (

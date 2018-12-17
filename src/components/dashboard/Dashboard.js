@@ -32,7 +32,6 @@ class Dashboard extends React.Component {
 
   handleDropDownClick(optName) {
     // TODO
-    console.log(optName);
   }
 
   starVis(bodyRequest) {

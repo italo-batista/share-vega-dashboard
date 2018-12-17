@@ -30,7 +30,7 @@ class App extends Component {
   
     let NavbarComp = (
       <UserContext.Consumer>
-        {(context) => <Navbar setCurrentUser={context.setCurrentUser} />}
+        {(context) => <Navbar setCurrentUser={context.setCurrentUser} currentUser={context.currentUser}/>}
       </UserContext.Consumer>
     );
     
