@@ -5,6 +5,7 @@ import axios from "axios";
 
 import "./VisCard.css";
 import { Card, Icon } from "semantic-ui-react";
+import API from "../../api";
 
 class Visualization extends React.Component {
   constructor(props) {
@@ -30,11 +31,13 @@ class Visualization extends React.Component {
   }
 
   isUserinStars(userId, visStars) {
-    var userIndex = visStars.indexOf(userId);
-    if (userIndex > -1) {
-      return true;
+    for (let user of visStars) {
+      if (user._id  === userId) {
+        return true;
+      } else {
+        return false
+      }
     }
-    return false;
   }
 
   handleStarClick() {

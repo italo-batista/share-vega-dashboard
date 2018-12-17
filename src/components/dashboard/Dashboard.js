@@ -37,15 +37,15 @@ class Dashboard extends React.Component {
 
   starVis(bodyRequest) {
     const visId = bodyRequest.visualization_id;
-    API.post("star", bodyRequest).then(res => {
-      let visz = this.state.visualizations;
-      for (let vis of visz) {
-        if (vis._id === visId) {
+    let visz = this.state.visualizations;
+    for (let vis of visz) {
+      if (vis._id === visId) {
+        API.post("star", bodyRequest).then(res => {
           vis.userStars = vis.userStars.concat(this.getCurrentUser());
-        }
+          this.setState({ visualizations: visz });
+        });
       }
-      this.setState({ visualizations: visz });
-    });
+    }
   }
 
   unstarVis(bodyRequest) {
@@ -70,10 +70,12 @@ class Dashboard extends React.Component {
       visualization_id: visId,
       user_id: this.getCurrentUser()._id
     };
-    if (restMethod === "POST") {
-      this.starVis(bodyRequest);
-    } else if (restMethod === "DELETE") {
-      this.unstarVis(bodyRequest);
+    if (this.getCurrentUser()._id !== undefined) {
+      if (restMethod === "POST") {
+        this.starVis(bodyRequest);
+      } else if (restMethod === "DELETE") {
+        this.unstarVis(bodyRequest);
+      }
     }
   }
 
